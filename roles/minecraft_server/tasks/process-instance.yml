@@ -1,0 +1,40 @@
+---
+- name: Create a server instance directory for '{{item.name}}'
+  become_user: "{{server_user}}"
+  ansible.builtin.file:
+    state: directory
+    name: /var/{{server_user}}/{{item.name}}
+
+- name: Symlink the '{{item.name}}' server jar
+  become_user: "{{server_user}}"
+  ansible.builtin.file:
+    state: link
+    src: /var/{{server_user}}/{{item.server_jar}}
+    dest: /var/{{server_user}}/{{item.name}}/server.jar
+    force: yes
+
+- name: Create a systemd service for '{{item.name}}'
+  ansible.builtin.template:
+    src: templates/systemd.service.j2
+    dest: /etc/systemd/system/minecraft-{{item.name}}.service
+
+- name: Configure '{{item.name}}' systemd service to start on boot
+  systemd:
+    daemon-reload: yes
+    name: "minecraft-{{item.name}}"
+    enabled: yes
+
+- name: Create the '{{item.name}}' service controller script
+  ansible.builtin.template:
+    src: templates/service.sh.j2
+    dest: /var/{{server_user}}/{{item.name}}/service.sh
+    owner: "{{server_user}}"
+    group: "{{server_group}}"
+    mode: +x
+
+- name: Create the initial server properties for '{{item.name}}'
+  ansible.builtin.template:
+    src: templates/server.properties.j2
+    dest: /var/{{server_user}}/{{item.name}}/server.properties
+    owner: "{{server_user}}"
+    group: "{{server_group}}"

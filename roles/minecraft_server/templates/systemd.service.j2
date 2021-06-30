@@ -1,0 +1,26 @@
+[Unit]
+Description=Minecraft ({{item.name}})
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Type=forking
+User={{server_user}}
+Group={{server_user}}
+Nice=5
+TimeoutStopSec=90
+ProtectHome=read-only
+ProtectSystem=full
+PrivateDevices=yes
+NoNewPrivileges=yes
+PrivateTmp=no
+InaccessiblePaths=/root /sys /srv -/opt /media -/lost+found
+ReadWriteDirectories=/var/{{server_user}}/{{item.name}}
+WorkingDirectory=/var/{{server_user}}/{{item.name}}
+PIDFile=/var/{{server_user}}/{{item.name}}/minecraft-{{item.name}}.pid
+ExecStart=/var/{{server_user}}/{{item.name}}/service.sh start
+ExecReload=/var/{{server_user}}/{{item.name}}/service.sh reload
+ExecStop=/var/{{server_user}}/{{item.name}}/service.sh stop
+
+[Install]
+WantedBy=multi-user.target
