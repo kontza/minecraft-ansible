@@ -5,14 +5,10 @@
     server_group: paper
     server_instances:
       - name: silvia
-        rcon_password: Celibate-Recognize-Stopping4
-        rcon_port: 25575
-        server_jar: paper-1.16.5-779.jar
+        server_jar: spigot-1.17.jar
         server_port: 25565
         world_name: brave-new-world
       - name: pojat
-        rcon_password: Boogeyman-S!lective-Ma-hood-Expend-Oncoming-Cr+spy
-        rcon_port: 35575
         server_jar: spigot-1.17.jar
         server_port: 35565
         world_name: maailma
