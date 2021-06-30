@@ -5,6 +5,14 @@
     state: directory
     name: /var/{{server_user}}/{{item.name}}
 
+- name: Copy the server jar to the host
+  ansible.builtin.copy:
+    remote_src: false
+    src: "{{item.server_jar}}"
+    dest: /var/{{server_user}}
+    owner: "{{server_user}}"
+    group: "{{server_group}}"
+
 - name: Symlink the '{{item.name}}' server jar
   become_user: "{{server_user}}"
   ansible.builtin.file:

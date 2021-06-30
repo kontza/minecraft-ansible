@@ -11,8 +11,8 @@
       - name: pojat
         server_jar: spigot-1.17.jar
         server_port: 35565
-        world_name: maailma
+        world_name: parempi_maailma
   hosts:
-    - kaivoskarhu
+    - minecraft_hosts
   roles:
     - minecraft_server
