@@ -6,6 +6,15 @@
     home: /var/{{server_user}}
     shell: /bin/sh
 
+- name: Create a disclaimer file
+  ansible.builtin.copy:
+    owner: "{{server_user}}"
+    group: "{{server_group}}"
+    dest: /var/{{server_user}}/README.md
+    content: |
+      # Note!
+      This directory and its services are managed by https://github.com/kontza/minecraft-ansible
+
 - name: Make sure tmux is installed
   ansible.builtin.package:
     name: tmux
