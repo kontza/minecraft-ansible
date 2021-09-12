@@ -1,17 +1,5 @@
 ---
 - name: Install Minecraft servers
-  vars:
-    server_user: paper
-    server_group: paper
-    server_instances:
-      - name: silvia
-        server_jar: paper-1.17.1.jar
-        server_port: 25565
-        world_name: brave-new-world
-      - name: pojat
-        server_jar: paper-1.17.1.jar
-        server_port: 35565
-        world_name: uusi_parempi_maailma
   hosts:
     - minecraft_hosts
   roles:

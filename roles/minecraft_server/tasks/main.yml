@@ -1,4 +1,10 @@
 ---
+- name: Install Java 16
+  become: yes
+  ansible.builtin.package:
+    name: openjdk-16-jre
+    state: present
+
 - name: Create server user
   ansible.builtin.user:
     name: "{{server_user}}"
@@ -25,3 +31,11 @@
   loop: "{{server_instances}}"
   tags:
     - always
+
+- name: Make sure {{server_user}} owns all files
+  become: yes
+  ansible.builtin.file:
+    path: "/var/{{server_user}}"
+    owner: "{{server_user}}"
+    group: "{{server_group}}"
+    recurse: yes
