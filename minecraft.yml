@@ -1,6 +1,6 @@
 ---
 - name: Install Minecraft servers
   hosts:
-    - minecraft_hosts
+    - localhost
   roles:
     - minecraft_server

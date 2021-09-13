@@ -1,2 +1,2 @@
 #!/bin/sh
-ansible-playbook -b -K -i inventories/minecraft minecraft.yml "$@"
+ansible-playbook -b -K minecraft.yml "${@:1}"

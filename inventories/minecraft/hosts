@@ -1,8 +1,0 @@
-all:
-  hosts:
-    otsonkolo:
-    kaivoskarhu:
-  children:
-    minecraft_hosts:
-      hosts:
-        otsonkolo:
