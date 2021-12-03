@@ -3,7 +3,7 @@ This is the way I roll Minecraft servers.
 
 # Installing
 1. Obtain a server JAR, and place it in the repo root.
-2. Update `minecraft.yml` so that the `server_jar` property matches the name of the server JAR's name.
+2. Update `group_vars/all` so that the `server_jar` property matches the name of the server JAR's name.
 3. Make sure that both `server_port`, and `world_name` match the values you want.
 4. Run `./run-tasks`.
 5. Restart `minecraft-***` services.
