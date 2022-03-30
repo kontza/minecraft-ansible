@@ -8,4 +8,4 @@ server_instances:
   - name: pojat
     server_jar: paper-1.18.2-271.jar
     server_port: 35565
-    world_name: uusi_parempi_maailma
+    world_name: viela_parempi_maailma
