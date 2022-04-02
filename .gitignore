@@ -1,2 +1,3 @@
 paper*.jar
 tags*
+group_vars/*.bak
